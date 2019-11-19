@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <title>Spa Menu</title>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<body>
+<h1>My Super Fancy Spa</h1>
+<div id = "clientProfile">
+    <h2>My Profile</h2>
+<p th:text = "${name}"></p>
+<p th:text = "${skintype}"></p>
+</div>
+<div id = "servicesMenu">
+    <h2>Menu of Available Services</h2>
+    <table>
+        <tr>
+            <th>Facial</th>
+            </tr>
+    <th:block th:each = "facial : ${appropriateFacials}">
+        <tr>
+            <td th:text = "${facial}"></td>
+        </tr>
+    </th:block>
+    </table>
+</div>
+</body>
+</html>
