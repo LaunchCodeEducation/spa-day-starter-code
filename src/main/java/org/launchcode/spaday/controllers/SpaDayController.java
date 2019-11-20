@@ -56,13 +56,18 @@ public class SpaDayController {
                 "<option value = 'normal'>Normal</option>" +
                 "<option value = 'dry'>Dry</option>" +
                 "</select><br>" +
+                "Manicure or Pedicure? <br>" +
+                "<select name = 'manipedi'>" +
+                "<option value = 'manicure'>Manicure</option>" +
+                "<option value = 'pedicure'>Pedicure</option>" +
+                "</select><br>" +
                 "<input type = 'submit' value = 'Submit'>" +
                 "</form>";
         return html;
     }
 
     @PostMapping(value="")
-    public String spaMenu(@RequestParam String name, @RequestParam String skintype, Model model) {
+    public String spaMenu(@RequestParam String name, @RequestParam String skintype, @RequestParam String manipedi, Model model) {
         String cap = skintype.substring(0, 1).toUpperCase() + skintype.substring(1);
 
         ArrayList<String> facials = new ArrayList<String>();
@@ -82,6 +87,7 @@ public class SpaDayController {
         model.addAttribute("skintype", cap);
         model.addAttribute("facials", facials);
         model.addAttribute("appropriateFacials", appropriateFacials);
+        model.addAttribute("manipedi", manipedi);
         return "menu";
     }
 }
