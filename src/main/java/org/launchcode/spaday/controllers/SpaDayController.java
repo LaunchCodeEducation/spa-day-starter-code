@@ -1,5 +1,6 @@
 package org.launchcode.spaday.controllers;
 
+import org.launchcode.spaday.models.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,66 +11,18 @@ import java.util.ArrayList;
 @Controller
 public class SpaDayController {
 
-    public boolean checkSkinType(String skinType, String facialType) {
-        if (skinType.equals("oily")) {
-            if (facialType.equals("Microdermabrasion") || facialType.equals("Rejuvenating")) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else if (skinType.equals("combination")) {
-            if (facialType.equals("Microdermabrasion") || facialType.equals("Rejuvenating") || facialType.equals("Enzyme Peel")) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else if (skinType.equals("normal")) {
-            return true;
-        }
-        else if (skinType.equals("dry")) {
-            if (facialType.equals("Rejuvenating") || facialType.equals("Hydrofacial")) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return true;
-        }
-    }
-
     @GetMapping
     public String customerForm () {
         return "serviceSelection";
     }
 
-    @PostMapping()
+    @PostMapping
     public String spaMenu(@RequestParam String name, @RequestParam String skintype, @RequestParam String manipedi, Model model) {
-        String cap = skintype.substring(0, 1).toUpperCase() + skintype.substring(1);
 
-        ArrayList<String> facials = new ArrayList<String>();
-        facials.add("Microdermabrasion");
-        facials.add("Hydrofacial");
-        facials.add("Rejuvenating");
-        facials.add("Enzyme Peel");
+        Client newClient = new Client(skintype, manipedi, name);
+        newClient.setAppropriateFacials(skintype);
+        model.addAttribute("client" , newClient);
 
-        ArrayList<String> appropriateFacials = new ArrayList<String>();
-        for (int i = 0; i < facials.size(); i ++) {
-            if (checkSkinType(skintype,facials.get(i))) {
-                appropriateFacials.add(facials.get(i));
-            }
-        }
-
-        model.addAttribute("name" , name);
-        model.addAttribute("skintype", cap);
-        model.addAttribute("facials", facials);
-        model.addAttribute("appropriateFacials", appropriateFacials);
-        model.addAttribute("manipedi", manipedi);
         return "menu";
     }
 }
