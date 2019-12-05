@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th = "http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
     <title>Sign Up</title>
 </head>
 <body>
@@ -26,7 +27,7 @@
             <input type = 'password' name = 'verify'>
         </label>
 
-        <div th:text="${error}"></div>
+        <p th:text="${error}"></p>
 
         <input type = 'submit' value = 'Sign Up'>
     </form>
