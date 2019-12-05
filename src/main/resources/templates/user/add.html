@@ -8,12 +8,12 @@
     <form method = 'post' th:action="@{/user/add}">
         <label>
             Username:
-            <input type = 'text' name = 'username'>
+            <input type = 'text' name = 'username' th:value="${username}">
         </label>
 
         <label>
             Email:
-            <input type = 'email' name = 'email'>
+            <input type = 'email' name = 'email' th:value="${email}">
         </label>
 
         <label>
@@ -23,8 +23,10 @@
 
         <label>
             Verify Password:
-            <input type = 'password' name = 'verify_password'>
+            <input type = 'password' name = 'verify'>
         </label>
+
+        <div th:text="${error}"></div>
 
         <input type = 'submit' value = 'Sign Up'>
     </form>
