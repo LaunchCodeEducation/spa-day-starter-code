@@ -12,9 +12,13 @@ import java.util.ArrayList;
 public class SpaDayController {
 
     @GetMapping
-    public String customerForm (Model model, @RequestParam String username) {
-        model.addAttribute("username", username);
-        return "serviceSelection";
+    public String customerForm (Model model, String username) {
+        if (username != null){
+            model.addAttribute("username", username);
+            return "serviceSelection";
+        } else {
+            return "redirect:user/add";
+        }
     }
 
     @PostMapping
