@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @GetMapping("/add")
-    public String getAddUserForm() {
+    public String displayAddUserForm() {
         return "user/add";
     }
 
     @PostMapping
-    public String postAddUserForm(Model model, @ModelAttribute User user, String verify) {
+    public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
         model.addAttribute("user", user);
         model.addAttribute("verify", verify);
         model.addAttribute("username", user.getUsername());
