@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
-    <title>Title</title>
+    <title>Welcome</title>
 </head>
 <body>
     <p th:text = "'Welcome ' + ${user.username} + '!'"></p>
-    <a th:href="@{/(username=${user.username})}">
+    <a th:href="@{/}">
         Select your spa services here
     </a>
 </body>

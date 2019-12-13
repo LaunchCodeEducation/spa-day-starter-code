@@ -12,18 +12,12 @@ import java.util.ArrayList;
 public class SpaDayController {
 
     @GetMapping
-    public String customerForm (Model model, String username) {
-        if (username != null){
-            model.addAttribute("username", username);
-            return "serviceSelection";
-        } else {
-            return "redirect:user/add";
-        }
+    public String customerForm (Model model) {
+        return "serviceSelection";
     }
 
     @PostMapping
-    public String spaMenu(@RequestParam String username, @RequestParam String skintype, @RequestParam String manipedi, Model model) {
-        model.addAttribute("username", username);
+    public String spaMenu(@RequestParam String skintype, @RequestParam String manipedi, Model model) {
         Client newClient = new Client(skintype, manipedi);
         newClient.setAppropriateFacials(skintype);
         model.addAttribute("client" , newClient);
