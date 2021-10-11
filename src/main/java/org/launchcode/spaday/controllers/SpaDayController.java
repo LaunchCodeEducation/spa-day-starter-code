@@ -55,6 +55,10 @@ public class SpaDayController {
         facials.add("Hydrofacial");
         facials.add("Rejuvenating");
         facials.add("Enzyme Peel");
+        
+        model.addAttribute("name",name);
+        model.addAttribute("skintype",skintype);
+        model.addAttribute("manipedi",manipedi);
 
         ArrayList<String> appropriateFacials = new ArrayList<>();
         for (int i = 0; i < facials.size(); i ++) {
@@ -63,6 +67,7 @@ public class SpaDayController {
             }
         }
 
+        model.addAttribute("appropriateFacials",appropriateFacials);
         return "menu";
     }
 }
