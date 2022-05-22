@@ -63,6 +63,12 @@ public class SpaDayController {
             }
         }
 
+        //pass these variables to the model to utilize
+        model.addAttribute("name", name);
+        model.addAttribute("skinType",skintype);
+        model.addAttribute("maniPedi",manipedi);
+        model.addAttribute("appropriateFacials", appropriateFacials);
+
         return "menu";
     }
 }
