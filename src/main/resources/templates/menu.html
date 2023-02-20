@@ -24,15 +24,19 @@
     <div>
     <h3>Facial Treatments</h3>
         <p>The facial treatments below are recommended by our estheticians for your given skin type.</p>
+
+        <table>
+            <th:block th:each="facial : ${appropriateFacials}">
+                <tr>
+
+                    <td th:text="${facial}"></td>
+                </tr>
+
+
+            </th:block>
+        </table>
 </div>
 
-
-    <table th:each="facial : ${appropriateFacials}">
-
-        <tr th:block th:text="${facial}" ></tr>
-
-
-    </table>
 
 
 
